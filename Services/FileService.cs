@@ -1,9 +1,7 @@
 ﻿using Azure.Storage.Files.Shares;
-using Azure.Storage.Files.Shares.Models;
 using Microsoft.Extensions.Configuration;
 using System.IO;
 using System.Threading.Tasks;
-
 
 namespace ST10257937cldv.Services
 {
@@ -16,6 +14,7 @@ namespace ST10257937cldv.Services
             _shareServiceClient = new ShareServiceClient(configuration["AzureStorage:ConnectionString"]);
         }
 
+        // Upload file to Azure File Share
         public async Task UploadFileAsync(string shareName, string fileName, Stream content)
         {
             var shareClient = _shareServiceClient.GetShareClient(shareName);
@@ -26,5 +25,4 @@ namespace ST10257937cldv.Services
             await fileClient.UploadAsync(content);
         }
     }
-
 }

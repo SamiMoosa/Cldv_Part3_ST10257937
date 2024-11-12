@@ -2,7 +2,6 @@
 using Microsoft.Extensions.Configuration;
 using System.Threading.Tasks;
 
-
 namespace ST10257937cldv.Services
 {
     public class QueueService
@@ -14,6 +13,7 @@ namespace ST10257937cldv.Services
             _queueServiceClient = new QueueServiceClient(configuration["AzureStorage:ConnectionString"]);
         }
 
+        // Send message to Azure Queue
         public async Task SendMessageAsync(string queueName, string message)
         {
             var queueClient = _queueServiceClient.GetQueueClient(queueName);
@@ -21,5 +21,4 @@ namespace ST10257937cldv.Services
             await queueClient.SendMessageAsync(message);
         }
     }
-
 }

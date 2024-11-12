@@ -1,36 +1,64 @@
 ﻿@model ST10257937cldv.Models.CustomerProfile
 
-<!-- Profile Image Upload Section -->
-<div class="form-container">
-    <form asp-action="UploadImage" method="post" enctype="multipart/form-data">
-        <input type="file" name="file" class="form-control" />
-        <button type="submit" class="btn">Upload Image</button>
-    </form>
-</div>
+@{
+    ViewData["Title"] = "Home Page";
+}
 
-<!-- Customer Profile Form Section -->
-<div class="form-container">
+<h1>@ViewData["Title"]</h1>
+
+<!-- Customer Profile Form -->
+<div>
+    <h2>Add Customer Profile</h2>
     <form asp-action="AddCustomerProfile" method="post">
-        <input type="text" name="FirstName" placeholder="First Name" class="form-control" />
-        <input type="text" name="LastName" placeholder="Last Name" class="form-control" />
-        <input type="email" name="Email" placeholder="Email" class="form-control" />
-        <input type="text" name="PhoneNumber" placeholder="Phone Number" class="form-control" />
-        <button type="submit" class="btn">Add Profile</button>
+        <div>
+            <label for="first-name">First name:</label>
+            <input type="text" id="first-name" name="FirstName" class="form-control" required />
+        </div>
+        <div>
+            <label for="last-name">Last name:</label>
+            <input type="text" id="last-name" name="LastName" class="form-control" required />
+        </div>
+        <div>
+            <label for="phone-number">Phone number:</label>
+            <input type="text" id="phone-number" name="PhoneNumber" class="form-control" required />
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="Email" class="form-control" required />
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary">Add Profile</button>
+        </div>
     </form>
 </div>
 
-<!-- Order Processing Form Section -->
-<div class="form-container">
+<!-- File Upload Section for Contract -->
+<div>
+    <h2>Upload Contract</h2>
+    <form asp-action="UploadFile" method="post" enctype="multipart/form-data">
+        <label for="contract-file">Upload Contract</label>
+        <input type="file" id="contract-file" name="contractFile" class="form-control" />
+        <button type="submit" class="btn btn-primary">Submit Contract</button>
+    </form>
+</div>
+
+<!-- File Upload Section for Image -->
+<div>
+    <h2>Upload Image</h2>
+    <form asp-action="UploadImage" method="post" enctype="multipart/form-data">
+        <label for="image-file">Upload Image</label>
+        <input type="file" id="image-file" name="imageFile" class="form-control" />
+        <button type="submit" class="btn btn-primary">Submit Image</button>
+    </form>
+</div>
+
+<!-- Order Processing Section -->
+<div>
+    <h2>Process Order</h2>
     <form asp-action="ProcessOrder" method="post">
-        <input type="text" name="orderId" placeholder="Order ID" class="form-control" />
-        <button type="submit" class="btn">Process Order</button>
-    </form>
-</div>
-
-<!-- Contract Upload Form Section -->
-<div class="form-container">
-    <form asp-action="UploadContract" method="post" enctype="multipart/form-data">
-        <input type="file" name="file" class="form-control" />
-        <button type="submit" class="btn">Upload Contract</button>
+        <div>
+            <input type="text" id="order-id" name="orderId" class="form-control" placeholder="Order ID" required />
+            <button type="submit" class="btn btn-primary">Process Order</button>
+        </div>
     </form>
 </div>

@@ -11,11 +11,15 @@ namespace ST10257937cldv.Models
         public DateTimeOffset? Timestamp { get; set; }
         public ETag ETag { get; set; }
 
-        // Custom properties
+        // Customer information
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
+
+        // Optional: paths to image and contract files
+        public string? ContractFilePath { get; set; }
+        public string? ImageFilePath { get; set; }
 
         public CustomerProfile()
         {
